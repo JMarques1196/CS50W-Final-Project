@@ -1,0 +1,30 @@
+{% extends "final/layout.html" %}
+{% load static %}
+
+
+{% block body %}
+<div id="auth-container">
+    <div class="auth">
+        <ul>
+            <li>
+                <h1 class="auth-link">Sign Up</h1>
+                <form action="{% url 'signup' %}" method="post">
+                    {% csrf_token %}
+                    {{registrationForm}}
+                    <input type="submit" value="Submit">
+                </form>
+            </li>
+            {% if message %}
+                <li>
+                    <p>{{message}}</p>
+                </li>
+            {% endif %}
+                <li>
+                    <p>Already have an account? 
+                        <a class="no-account" href="{% url 'login'%}">Login</a>
+                    </p>
+                </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

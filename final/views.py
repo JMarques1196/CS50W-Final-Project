@@ -28,8 +28,16 @@ class registrationForm(forms.Form):
 
 
 def homepage(request):
+    
+    user = request.user
+    return render(request, "final/homepage.html", {        
+        "user": user
+    })
+
+def project(request, id):
         return render(request, "final/homepage.html", {        
-})
+
+    })
 
 # AUTH
 #LOGIN VIEW
@@ -49,7 +57,7 @@ def loginView(request):
                 login(request, user)
                 return HttpResponseRedirect(reverse("homepage"))
             else:
-                return render(request, "final/index.html", {
+                return render(request, "final/login.html", {
                     "message": "Invalid username and/or password."
                 })
     else:
@@ -58,9 +66,9 @@ def loginView(request):
         })
     
 # LOGOUT VIEW
-def logout(request):
+def logoutView(request):
     logout(request)
-    return HttpResponseRedirect(reverse("index"))
+    return HttpResponseRedirect(reverse("login"))
 
 # SIGNUP VIEW
 def signup(request):
@@ -81,7 +89,7 @@ def signup(request):
                     user = User.objects.create_user(username, email)
                     user.set_password(password)
                     user.save()
-                    return render(request, "final/index.html", {
+                    return render(request, "final/login.html", {
                     
                     })
                 except IntegrityError:

@@ -35,7 +35,7 @@ def homepage(request):
     })
 
 def project(request, id):
-        return render(request, "final/homepage.html", {        
+        return render(request, "final/project.html", {        
 
     })
 

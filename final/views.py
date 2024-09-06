@@ -10,7 +10,7 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
-from .models import User
+from .models import User, Project, Media
 
 #FORMS
 
@@ -27,16 +27,25 @@ class registrationForm(forms.Form):
     email= forms.CharField(widget=forms.Textarea(attrs={'class': 'input'}))
 
 
-def homepage(request):
-    
+def homepage(request):  
     user = request.user
+    projects = Project.objects.all()
+
     return render(request, "final/homepage.html", {        
-        "user": user
+        "user": user,
+        "projects": projects
     })
 
 def project(request, id):
-        return render(request, "final/project.html", {        
-
+    project = Project.objects.get(pk=id)
+    media = Media.objects.filter(project=project)
+    print(media)
+    urls = []
+    for url in media:
+        urls.append(url.url)    
+    print(urls)
+    return render(request, "final/project.html", {        
+        "project": project
     })
 
 # AUTH

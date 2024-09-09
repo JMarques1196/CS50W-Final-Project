@@ -4,6 +4,12 @@
 
 {% block body %}
 <div id="homepage" >
-    <h1>{{project.title}}</h1>
+    <div class="nav">
+        <h1>{{project.title}}</h1>
+        <a href="{% url 'homepage' %}">Go Back</a>
+    </div>   
+    {% for url in urls %}
+        <img class="project-media" src="{{url}}" alt="">
+    {% endfor %}
 </div>
 {% endblock %}

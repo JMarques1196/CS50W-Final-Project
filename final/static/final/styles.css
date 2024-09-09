@@ -68,3 +68,8 @@ a{
     background-color: purple;
     margin: 1rem;
 }
+
+.project-media{
+    width: 300px;
+    height: auto;
+}

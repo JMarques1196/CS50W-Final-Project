@@ -37,15 +37,18 @@ def homepage(request):
     })
 
 def project(request, id):
+    # Get both the projects and its corresponding urls
     project = Project.objects.get(pk=id)
     media = Media.objects.filter(project=project)
-    print(media)
+    # Extract urls
     urls = []
     for url in media:
         urls.append(url.url)    
     print(urls)
+
     return render(request, "final/project.html", {        
-        "project": project
+        "project": project,
+        "urls": urls
     })
 
 # AUTH

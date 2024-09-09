@@ -14,3 +14,4 @@ class Project(models.Model):
 class Media(models.Model):
     project = models.ForeignKey(Project, max_length=150,  null=True, on_delete=models.CASCADE)
     url = models.CharField(max_length = 500)
+    resource = models.CharField(max_length = 500)

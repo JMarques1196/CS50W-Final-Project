@@ -10,7 +10,12 @@
     <link href="{% static 'final/styles.css' %}" rel="stylesheet">
 </head>
 <body> 
-
+    {% if user.is_authenticated %}
+    <div class="nav">
+        <p class="welcome">Welcome {{user}}</p>
+        <a href="{% url 'logout' %}">Logout</a>     
+    </div>
+    {% endif %}
     {% block body %}
     {% endblock %}
 

@@ -5,11 +5,25 @@
 {% block body %}
 <div id="homepage" >
     <div class="nav">
-        <h1>{{project.title}}</h1>
-        <a href="{% url 'homepage' %}">Go Back</a>
+        <h1 class="welcome">{{project.title}}</h1>
+        <a class="nav-link" href="{% url 'homepage' %}">Go Back</a>
     </div>   
-    {% for url in urls %}
-        <img class="project-media" src="{{url}}" alt="">
+        <div class="carousel">
+            {% for resource in resources %}
+                <img class="carousel-img" src="{{resource.url}}" alt="">
+            {% endfor %}
+            <button class="prev">Prev</button>
+            <button class="next">Next</button>
+        </div>
+    {% for resource in resources %}
+        <div>
+            <a href="{{resource.resource}}">{{resource.resourceTitle}}</a>
+        </div>
     {% endfor %}
 </div>
+{% endblock %}
+
+
+{% block script %}
+    <script type="text/javascript" src="{% static 'final/project.js' %}"></script>
 {% endblock %}

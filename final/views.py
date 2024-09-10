@@ -39,16 +39,12 @@ def homepage(request):
 def project(request, id):
     # Get both the projects and its corresponding urls
     project = Project.objects.get(pk=id)
-    media = Media.objects.filter(project=project)
-    # Extract urls
-    urls = []
-    for url in media:
-        urls.append(url.url)    
-    print(urls)
+    resources = Media.objects.filter(project=project)
+    # Extract urls and resources
 
     return render(request, "final/project.html", {        
         "project": project,
-        "urls": urls
+        "resources": resources
     })
 
 # AUTH
@@ -114,3 +110,6 @@ def signup(request):
             return render(request, "final/signup.html", {
                 "registrationForm": registrationForm
             })
+
+
+

@@ -1,10 +1,14 @@
+html{
+    background-color: #3454D1;
+}
+
 li{
     text-align: center;
 }
 
 a{
-    text-decoration: none;
     text-align: center;
+    color: #EFEFEF;
 }
 
 #auth-container{
@@ -26,7 +30,7 @@ a{
 
 .auth-link{
     width: 100%;
-    color: white;
+    color: #EFEFEF;
     font-size: 1.9rem;
     text-align: center;
 }
@@ -42,8 +46,12 @@ a{
 .nav{
     display: flex;
     justify-content: space-around;
+    margin: 0.5rem;
     height: 2rem;
     font-size: 1.3rem;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    color: #EFEFEF;
 }
 
 .welcome{
@@ -53,6 +61,10 @@ a{
 .homepage-message{
     text-align: center;
     font-size: 1.5rem;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    color: #EFEFEF;
 }
 
 #project-container{
@@ -64,12 +76,71 @@ a{
 
 .project{
     width: 300px;
-    height: 250px;
-    background-color: purple;
     margin: 1rem;
+    transition: all .2s ease-in-out; 
+}
+
+.project:hover{
+    transform: scale(1.1);
+}
+
+.title{
+    text-align: center;
+    font-size: 1rem;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #34D1BF;
+}
+
+.cover{
+    width: 100%;
+    height: 80%;
+    border-radius: 10px;
+    border: 1px solid #070707;
 }
 
 .project-media{
     width: 300px;
     height: auto;
+}
+
+/* INDIVIDUAL PROJECT STYLES */
+
+.carousel{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    height: 200px;
+}
+
+.carousel-img{
+    position: absolute;
+    display: none;
+    left: 0px;
+    top: 0px;
+    height:  100%;
+   
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.active{
+    display: block;
+    opacity: 1;
+}
+
+.prev{
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    z-index: 100;
+}
+
+.next{
+    position: absolute;
+    z-index: 100;
+    top: 50%;
+    right: 0px;
 }

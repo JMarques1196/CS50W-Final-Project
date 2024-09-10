@@ -8,10 +8,13 @@
     <h1 class="homepage-message">What are you working on today?</h1>
     <div id="project-container">
         {% for project in projects %}
-            <div class="project">{{project.title}}
-                <a href="{% url 'project' id=project.id %}">link</a>
-                <p>{{project.id}}</p>
+            <div class="project">
+                <h1 class="title">{{project.title}}</h1>
+                <a href="{% url 'project' id=project.id %}">
+                    <img class="cover" src="{{project.coverImage}}" alt="">
+                </a>
             </div>
+            
         {% endfor %}
     </div>
 </div>

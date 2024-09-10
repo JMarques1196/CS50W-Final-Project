@@ -10,8 +10,10 @@ class User(AbstractUser):
 class Project(models.Model):
     title = models.CharField(max_length=64)
     body = models.CharField(max_length = 500)
+    coverImage = models.CharField(max_length = 500)
 
 class Media(models.Model):
     project = models.ForeignKey(Project, max_length=150,  null=True, on_delete=models.CASCADE)
     url = models.CharField(max_length = 500)
+    resourceTitle = models.CharField(max_length = 150)
     resource = models.CharField(max_length = 500)

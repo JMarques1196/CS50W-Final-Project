@@ -20,6 +20,22 @@
             <a href="{{resource.resource}}">{{resource.resourceTitle}}</a>
         </div>
     {% endfor %}
+    
+    <div id="chat-container">
+        <div id="message-box">
+            {% for message in messages %}
+                {{message.content}}   
+            {% endfor %}
+        </div>
+       
+        {% if user.is_authenticated%}
+            <form class=""  method="POST">
+                {% csrf_token %}
+                <input class="input-space" type="text" name="comment" placeholder="Add a comment">
+                <input class="submit input-space" type="submit">
+            </form>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
 

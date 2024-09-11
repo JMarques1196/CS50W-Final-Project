@@ -10,7 +10,7 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
-from .models import User, Project, Media
+from .models import User, Project, Media, Message
 
 #FORMS
 
@@ -26,7 +26,7 @@ class registrationForm(forms.Form):
     confirmation = forms.CharField(widget=forms.Textarea(attrs={'class': 'input'}))
     email= forms.CharField(widget=forms.Textarea(attrs={'class': 'input'}))
 
-
+# VIEWS
 def homepage(request):  
     user = request.user
     projects = Project.objects.all()
@@ -40,12 +40,16 @@ def project(request, id):
     # Get both the projects and its corresponding urls
     project = Project.objects.get(pk=id)
     resources = Media.objects.filter(project=project)
+    messages = Message.objects.all()
     # Extract urls and resources
 
     return render(request, "final/project.html", {        
         "project": project,
-        "resources": resources
+        "resources": resources,
+        "messages" : messages
     })
+
+
 
 # AUTH
 #LOGIN VIEW

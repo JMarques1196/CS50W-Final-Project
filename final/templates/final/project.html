@@ -29,10 +29,10 @@
         </div>
        
         {% if user.is_authenticated%}
-            <form class=""  method="POST">
+            <form class="message-input" action="" method="POST">
                 {% csrf_token %}
-                <input class="input-space" type="text" name="comment" placeholder="Add a comment">
-                <input class="submit input-space" type="submit">
+                    {{form}}
+                    <input class="submit input-space" type="submit">
             </form>
         {% endif %}
     </div>

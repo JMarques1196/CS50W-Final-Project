@@ -26,6 +26,10 @@ class registrationForm(forms.Form):
     confirmation = forms.CharField(widget=forms.Textarea(attrs={'class': 'input'}))
     email= forms.CharField(widget=forms.Textarea(attrs={'class': 'input'}))
 
+#MESSAGE 
+class messageForm(forms.Form):
+    message = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Add a new comment'}), max_length='150', label=False)
+
 # VIEWS
 def homepage(request):  
     user = request.user
@@ -41,12 +45,14 @@ def project(request, id):
     project = Project.objects.get(pk=id)
     resources = Media.objects.filter(project=project)
     messages = Message.objects.all()
-    # Extract urls and resources
+    # Add a form for the messages
+    form = messageForm() 
 
     return render(request, "final/project.html", {        
         "project": project,
         "resources": resources,
-        "messages" : messages
+        "messages" : messages,
+        "form": form,
     })
 
 

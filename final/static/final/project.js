@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const socket = new WebSocket(
     "ws://" + window.location.href.replace(/^http(s?):\/\//i, "")
   );
-
   socket.onopen = function (e) {
     console.log("connection successfull");
   };
@@ -26,18 +25,20 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("not connected");
   };
 
-  document.querySelector(".message-input").focus();
+  input = document.querySelector(".message-input");
+  submit = document.querySelector(".message-submit");
+  input.focus();
   // Submit message when pressing enter
-  document.querySelector(".message-submit").onkeyup = function (e) {
+  submit.onkeyup = function (e) {
     if (e.keyCode == 13) {
       // Enter = keyCode 13
-      document.querySelector(".message-submit").click();
+      submit.click();
     }
   };
   // Submit onClick
-  user = document.querySelector(".message-input").getAttribute("data-user");
-  document.querySelector(".message-submit").onclick = function (e) {
-    var message = document.querySelector(".message-input").value;
+  user = input.getAttribute("data-user");
+  submit.onclick = function (e) {
+    var message = input.value;
     // Send info
     socket.send(
       JSON.stringify({
@@ -51,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const data = JSON.parse(e.data);
     var div = document.createElement("div");
     div.innerHTML = data.username + " : " + data.message;
-    document.querySelector(".message-input").value = "";
+    input.value = "";
     document.querySelector("#message-box").appendChild(div);
   };
 });

@@ -38,7 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
   user = document.querySelector(".message-input").getAttribute("data-user");
   document.querySelector(".message-submit").onclick = function (e) {
     var message = document.querySelector(".message-input").value;
-    console.log(message);
     // Send info
     socket.send(
       JSON.stringify({
@@ -49,7 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   socket.onmessage = function (e) {
-    console.log("here");
     const data = JSON.parse(e.data);
     var div = document.createElement("div");
     div.innerHTML = data.username + " : " + data.message;

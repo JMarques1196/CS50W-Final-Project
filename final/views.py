@@ -40,19 +40,16 @@ def homepage(request):
         "projects": projects
     })
 
-def project(request, id):
+def project(request, id, *args, **kwargs):
     # Get both the projects and its corresponding urls
     project = Project.objects.get(pk=id)
     resources = Media.objects.filter(project=project)
-    messages = Message.objects.all()
+    context = {}
     # Add a form for the messages
-    form = messageForm() 
 
-    return render(request, "final/project.html", {        
+    return render(request, "final/project.html" ,{        
         "project": project,
         "resources": resources,
-        "messages" : messages,
-        "form": form,
     })
 
 

@@ -23,17 +23,15 @@
     
     <div id="chat-container">
         <div id="message-box">
-            {% for message in messages %}
-                {{message.content}}   
-            {% endfor %}
+            <!-- Messages Here -->
         </div>
        
         {% if user.is_authenticated%}
-            <form class="message-input" action="" method="POST">
+            <div>
                 {% csrf_token %}
-                    {{form}}
-                    <input class="submit input-space" type="submit">
-            </form>
+                    <input type="text" class="message-input" />
+                    <input class="message-submit" type="submit">
+            </div>
         {% endif %}
     </div>
 </div>

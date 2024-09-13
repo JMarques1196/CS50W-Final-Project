@@ -1,3 +1,5 @@
+/* https://coolors.co/efefef-3454d1-34d1bf-070707-d1345b <-- Color Pallete */
+
 html{
     background-color: #3454D1;
 }
@@ -154,4 +156,8 @@ a{
     width: 500px;
     height: 300px;
     background-color: #EFEFEF;
+}
+
+.message-input{
+    display: flex;
 }

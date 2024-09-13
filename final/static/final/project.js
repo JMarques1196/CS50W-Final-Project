@@ -17,7 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Create a new Websocket
   const socket = new WebSocket(
     "ws://" + window.location.href.replace(/^http(s?):\/\//i, "")
-  ); // Error was here
+  );
+
   socket.onopen = function (e) {
     console.log("connection successfull");
   };
@@ -34,14 +35,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
   // Submit onClick
+  user = document.querySelector(".message-input").getAttribute("data-user");
   document.querySelector(".message-submit").onclick = function (e) {
     var message = document.querySelector(".message-input").value;
     console.log(message);
-    // Send info to store it
+    // Send info
     socket.send(
       JSON.stringify({
         message: message,
-        username: "{{request.user.username}}",
+        username: user,
       })
     );
   };

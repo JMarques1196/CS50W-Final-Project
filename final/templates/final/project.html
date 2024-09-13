@@ -7,6 +7,7 @@
     <div class="nav">
         <h1 class="welcome">{{project.title}}</h1>
         <a class="nav-link" href="{% url 'homepage' %}">Go Back</a>
+        <p>{{user.username}}</p>
     </div>   
         <div class="carousel">
             {% for resource in resources %}
@@ -29,7 +30,7 @@
         {% if user.is_authenticated%}
             <div>
                 {% csrf_token %}
-                    <input type="text" class="message-input" />
+                    <input type="text" class="message-input" data-user="{{user.username}}"/>
                     <input class="message-submit" type="submit">
             </div>
         {% endif %}

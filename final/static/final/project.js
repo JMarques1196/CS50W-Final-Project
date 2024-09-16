@@ -38,11 +38,18 @@ document.addEventListener("DOMContentLoaded", () => {
   // Submit onClick
   user = input.getAttribute("data-user");
   submit.onclick = function (e) {
+    id = input.getAttribute("data-id");
     var message = input.value;
+
+    fetch("/save", {
+      method: "POST",
+      body: JSON.stringify({ id, message }),
+    }).then((res) => res.json());
     // Send info
     socket.send(
       JSON.stringify({
         message: message,
+        id: id,
         username: user,
       })
     );

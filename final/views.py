@@ -44,15 +44,28 @@ def project(request, id, *args, **kwargs):
     # Get both the projects and its corresponding urls
     project = Project.objects.get(pk=id)
     resources = Media.objects.filter(project=project)
-    context = {}
+    savedComments = Message.objects.filter(project = project)
     # Add a form for the messages
 
     return render(request, "final/project.html" ,{        
         "project": project,
         "resources": resources,
+        "savedComments": savedComments,
     })
 
-
+# View for saving chat comments, so we can have a chat history
+@csrf_exempt
+def save(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            project = Project.objects.get(pk = data['id'])
+            newMessage = Message(author = request.user, project=project, content = data['message'])
+            newMessage.save()
+ 
+            return JsonResponse({}, status=200)
+        except:
+            return JsonResponse({}, status=400)
 
 # AUTH
 #LOGIN VIEW

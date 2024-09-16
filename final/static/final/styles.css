@@ -42,7 +42,12 @@ a{
 }
 
 #homepage{
-
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
 }
 
 .nav{
@@ -108,6 +113,19 @@ a{
 }
 
 /* INDIVIDUAL PROJECT STYLES */
+#project-page{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+
+.info-container{
+    display: grid;
+    
+}
 
 .carousel{
     position: relative;
@@ -145,6 +163,10 @@ a{
     z-index: 100;
     top: 50%;
     right: 0px;
+}
+
+#resource-container{
+    display: grid;
 }
 
 #chat-container{

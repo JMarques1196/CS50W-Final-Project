@@ -4,13 +4,15 @@ document.addEventListener("DOMContentLoaded", () => {
   nav.style.display = "none";
   // Carousel
   const slides = document.querySelectorAll(".carousel-img");
+  const titles = document.querySelectorAll(".carousel-title");
   slides[0].classList.add("active");
+  titles[0].classList.add("active");
 
   document.querySelector(".prev").addEventListener("click", (e) => {
-    prevSlide(slides);
+    prevSlide(slides, titles);
   });
   document.querySelector(".next").addEventListener("click", (e) => {
-    nextSlide(slides);
+    nextSlide(slides, titles);
   });
 
   // Chat
@@ -58,30 +60,34 @@ document.addEventListener("DOMContentLoaded", () => {
   socket.onmessage = function (e) {
     const data = JSON.parse(e.data);
     var div = document.createElement("div");
+    div.classList.add("messages");
     div.innerHTML = data.username + " : " + data.message;
     input.value = "";
     document.querySelector("#message-box").appendChild(div);
   };
 });
 
-
 // Carousel
 let index = 0;
-function prevSlide(slides) {
+function prevSlide(slides, titles) {
   slides[index].classList.remove("active");
+  titles[index].classList.remove("active");
   index--;
 
   if (index < 0) index = slides.length - 1;
 
   slides[index].classList.add("active");
+  titles[index].classList.add("active");
 }
 
-function nextSlide(slides) {
+function nextSlide(slides, titles) {
   slides[index].classList.remove("active");
+  titles[index].classList.remove("active");
   index++;
 
   if (index > slides.length - 1) index = 0;
 
   slides[index].classList.add("active");
+  titles[index].classList.add("active");
 }
 //

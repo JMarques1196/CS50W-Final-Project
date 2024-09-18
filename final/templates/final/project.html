@@ -9,34 +9,32 @@
 </div>   
 <div id="project-page" >
     <div class="info-container">
+        <h1 class="title">Helpful Resources</h1>
             <div class="carousel">
                 {% for resource in resources %}
                     <img class="carousel-img" src="{{resource.url}}" alt="">
+                    <a  class="carousel-title" href="{{resource.resource}}">{{resource.resourceTitle}}</a>
                 {% endfor %}
                 <button class="prev">Prev</button>
                 <button class="next">Next</button>
             </div>
-            <div id="resource-container">
-                {% for resource in resources %}
-                    <a href="{{resource.resource}}">{{resource.resourceTitle}}</a>
-                {% endfor %}
-            </div>
     </div>
     <div id="chat-container">
+        <h1 class="title">Chat</h1>
         <div id="message-box">
             {% for savedComment in savedComments %}
             <!-- Messages Here -->
-                <h2><span>{{savedComment.author}}: </span>{{savedComment.content}}</h2>
+                <h2 class="messages"><span>{{savedComment.author}}: </span>{{savedComment.content}}</h2>
             {% endfor %}
         </div>
-       
         {% if user.is_authenticated%}
-            <div>
+            <div class="inputs">
                 {% csrf_token %}
                     <input type="text" class="message-input" data-user="{{user.username}}" data-id="{{project.id}}" />
                     <input class="message-submit" type="submit">
             </div>
         {% endif %}
+       
     </div>
 </div>
 {% endblock %}

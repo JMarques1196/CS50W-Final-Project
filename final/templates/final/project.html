@@ -13,7 +13,9 @@
             <div class="carousel">
                 {% for resource in resources %}
                     <img class="carousel-img" src="{{resource.url}}" alt="">
-                    <a  class="carousel-title" href="{{resource.resource}}">{{resource.resourceTitle}}</a>
+                    <div class="carousel-title">
+                        <a href="{{resource.resource}}">{{resource.resourceTitle}}</a>
+                    </div>
                 {% endfor %}
                 <button class="prev">Prev</button>
                 <button class="next">Next</button>

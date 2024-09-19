@@ -16,15 +16,15 @@ from .models import User, Project, Media, Message
 
 #LOGIN
 class formLogin(forms.Form):
-    username = forms.CharField(label='title', max_length=64)
-    password = forms.CharField(label='password', max_length=64)
+    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Username'}), label=False, max_length=64)
+    password = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Password'}), label=False, max_length=64)
 
 #SIGN UP
 class registrationForm(forms.Form):
-    username = forms.CharField(label='title', max_length=64)
-    password = forms.CharField(widget=forms.Textarea(attrs={'class': 'input'}))
-    confirmation = forms.CharField(widget=forms.Textarea(attrs={'class': 'input'}))
-    email= forms.CharField(widget=forms.Textarea(attrs={'class': 'input'}))
+    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Username'}),label=False, max_length=64)
+    password = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Password'}),label=False)
+    confirmation = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Confirmation'}),label=False)
+    email= forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Email'}),label=False)
 
 #MESSAGE 
 class messageForm(forms.Form):
@@ -76,17 +76,14 @@ def loginView(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-
-            user = User.objects.get(username = username)
-            #print(user.check_password(password)) Returning true as of now!
-           
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
                 return HttpResponseRedirect(reverse("homepage"))
             else:
                 return render(request, "final/login.html", {
-                    "message": "Invalid username and/or password."
+                    "message": "Invalid username and/or password.",
+                    "loginForm": loginForm
                 })
     else:
         return render(request, "final/login.html",{

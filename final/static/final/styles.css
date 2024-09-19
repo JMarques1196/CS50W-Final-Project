@@ -12,13 +12,47 @@ a{
     text-align: center;
     color: #EFEFEF;
 }
-
+/* Login / Signup */
 #auth-container{
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    
+}
+
+#id_username{
+    margin-bottom: 0.5rem;
+}
+
+#id_password{
+    margin-bottom: 0.5rem;
+}
+
+#id_confirmation{
+    margin-bottom: 0.5rem;
+}
+
+#id_email{
+    margin-bottom: 0.5rem;
+}
+
+#no-account{
+    margin-top: 0.5rem;
+    text-align: center;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+}
+
+.submit{
+    cursor: pointer;
+}
+
+.link-to{
+    color: #070707;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 600;
 }
 
 .auth{
@@ -28,19 +62,25 @@ a{
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #efefef;
 }
 
 .auth-link{
     width: 100%;
-    color: #EFEFEF;
+    color: #070707;
     font-size: 1.9rem;
     text-align: center;
+    font-size: 2.5rem;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    margin-bottom: 1rem;
 }
 
 .input{
     height: 30px;
 }
 
+/* Page styles */
 #homepage{
     display: flex;
     justify-content: center;
@@ -55,7 +95,7 @@ a{
     justify-content: space-around;
     margin: 0.5rem;
     height: 2rem;
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-family: "Ubuntu", sans-serif;
     font-weight: 400;
     color: #EFEFEF;
@@ -67,7 +107,7 @@ a{
 
 .homepage-message{
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 2.3rem;
     font-family: "Ubuntu", sans-serif;
     font-weight: 400;
     margin-bottom: 2rem;
@@ -93,7 +133,7 @@ a{
 
 .title{
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-family: "Ubuntu", sans-serif;
     font-weight: 600;
     margin-bottom: 1rem;
@@ -142,7 +182,7 @@ a{
     left: 0px;
     top: 0px;
     width: 100%;
-    opacity: 0;
+    opacity: 1;
     transition: all 0.5s ease-in-out;
 }
 
@@ -155,7 +195,7 @@ a{
     bottom:0px;
     opacity: 0.8;
     width: 100%;
-    height: 1.5rem;
+    height: 3rem;
     background-color: #EFEFEF;
     transition: all 0.5s ease-in-out;
 }
@@ -199,6 +239,7 @@ a{
 }
 
 .messages{
+    color: #070707;
     margin-left: 1rem;
     font-family: "Ubuntu", sans-serif;
     font-weight: 500;

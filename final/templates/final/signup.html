@@ -11,17 +11,17 @@
                 <form action="{% url 'signup' %}" method="post">
                     {% csrf_token %}
                     {{registrationForm}}
-                    <input type="submit" value="Submit">
+                    <input class="submit" type="submit" value="Sign Up">
                 </form>
             </li>
-            {% if message %}
-                <li>
-                    <p>{{message}}</p>
-                </li>
-            {% endif %}
-                <li>
+            <li id="no-account">
+                    {% if message %}
+                    
+                            <p>{{message}}</p>
+                
+                    {% endif %}
                     <p>Already have an account? 
-                        <a class="no-account" href="{% url 'login'%}">Login</a>
+                        <a class="link-to" href="{% url 'login'%}">Login</a>
                     </p>
                 </li>
         </ul>

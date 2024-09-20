@@ -101,6 +101,20 @@ a{
     color: #EFEFEF;
 }
 
+.footer{
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 2rem;
+        font-size: 1rem;
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 400;
+        color: #EFEFEF;
+    
+}
+
 .welcome{
 
 }
@@ -153,9 +167,26 @@ a{
 }
 
 /* INDIVIDUAL PROJECT STYLES */
+#project-info{
+    display: grid;
+}
+
+.project-link{
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #EFEFEF;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+}
+.project-link:hover{
+    color: #34D1BF;
+}
+
 #project-page{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
     margin-top: 6rem;
     margin-left: 3rem;
@@ -198,6 +229,10 @@ a{
     height: 3rem;
     background-color: #EFEFEF;
     transition: all 0.5s ease-in-out;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    align-content: space-around;
 }
 
 .active{

@@ -11,6 +11,7 @@ class Project(models.Model):
     title = models.CharField(max_length=64)
     body = models.CharField(max_length = 500)
     coverImage = models.CharField(max_length = 500)
+    link = models.CharField(max_length=200)
 
 class Media(models.Model):
     project = models.ForeignKey(Project, max_length=150,  null=True, on_delete=models.CASCADE)

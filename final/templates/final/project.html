@@ -7,15 +7,17 @@
     <h1 class="welcome">{{project.title}}</h1>
     <a class="nav-link" href="{% url 'homepage' %}">Go Back</a>
 </div>   
+<div id="project-info">
+    <a class="project-link" href="{{project.link}}">Project Info</a>
+    <a class="project-link" href="https://cs50.me/cs50w">Check Your Progress</a>
+</div>
 <div id="project-page" >
     <div class="info-container">
-        <h1 class="title">Helpful Resources</h1>
+        <h1 class="title">Useful Resources</h1>
             <div class="carousel">
                 {% for resource in resources %}
                     <img class="carousel-img" src="{{resource.url}}" alt="">
-                    <div class="carousel-title">
-                        <a href="{{resource.resource}}">{{resource.resourceTitle}}</a>
-                    </div>
+                    <a class="carousel-title" href="{{resource.resource}}">{{resource.resourceTitle}}</a>
                 {% endfor %}
                 <button class="prev">Prev</button>
                 <button class="next">Next</button>
@@ -39,6 +41,9 @@
        
     </div>
 </div>
+<div class="footer">
+    <h1 class="welcome">CS50W 2024 - Final Project</h1>
+</div>   
 {% endblock %}
 
 

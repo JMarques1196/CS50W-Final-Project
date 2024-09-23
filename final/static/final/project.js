@@ -16,6 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Chat
+  // Scroll bar on the bottom
+  var messageBox = document.querySelector("#message-box");
+  messageBox.scrollTop = messageBox.scrollHeight - messageBox.clientHeight;
   // Create a new Websocket
   const socket = new WebSocket(
     "ws://" + window.location.href.replace(/^http(s?):\/\//i, "")
@@ -64,6 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
     div.innerHTML = data.username + " : " + data.message;
     input.value = "";
     document.querySelector("#message-box").appendChild(div);
+    // set the scrollbar to the bottom again
+    messageBox.scrollTop = messageBox.scrollHeight - messageBox.clientHeight;
   };
 });
 

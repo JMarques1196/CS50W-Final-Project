@@ -10,7 +10,7 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
-from .models import User, Project, Media, Message
+from .models import User, Project, Media, Message, CheckList
 
 #FORMS
 
@@ -45,12 +45,14 @@ def project(request, id, *args, **kwargs):
     project = Project.objects.get(pk=id)
     resources = Media.objects.filter(project=project)
     savedComments = Message.objects.filter(project = project)
+    listItems = CheckList.objects.filter(project=project)
     # Add a form for the messages
 
     return render(request, "final/project.html" ,{        
         "project": project,
         "resources": resources,
         "savedComments": savedComments,
+        "listItems": listItems,
     })
 
 # View for saving chat comments, so we can have a chat history
@@ -64,6 +66,24 @@ def save(request):
             newMessage.save()
  
             return JsonResponse({}, status=200)
+        except:
+            return JsonResponse({}, status=400)
+        
+@csrf_exempt
+def check(request):
+    if request.method == "POST":
+        try:
+            checkbox = json.loads(request.body)
+            checkList = CheckList.objects.get(pk = checkbox['id'])
+            if checkList.status == True:
+                checkList.status = False
+            else:
+                checkList.status = True
+            
+            checkList.save()
+     
+            return JsonResponse({
+            }, status=200)
         except:
             return JsonResponse({}, status=400)
 

@@ -10,4 +10,5 @@ urlpatterns = [
     path("homepage", views.homepage, name="homepage"),
     path("project/<int:id>", views.project, name="project"),
     path("save", views.save, name="save"),
+    path("check", views.check, name="check"),
 ]

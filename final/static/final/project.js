@@ -15,6 +15,25 @@ document.addEventListener("DOMContentLoaded", () => {
     nextSlide(slides, titles);
   });
 
+  // Checklist
+  let isToggled = false;
+  const checkboxes = document.querySelectorAll(".checkbox");
+  const checkToggle = document.querySelector("#checklist-toggle");
+
+  checkToggle.onclick = () => {
+    if (isToggled) {
+      document.querySelector("#checklist").classList.remove("toggled");
+      isToggled = !isToggled;
+    } else {
+      document.querySelector("#checklist").classList.add("toggled");
+      isToggled = !isToggled;
+    }
+  };
+
+  checkboxes.forEach((checkbox) => {
+    checkbox.onclick = () => toggle(checkbox);
+  });
+
   // Chat
   // Scroll bar on the bottom
   var messageBox = document.querySelector("#message-box");
@@ -95,4 +114,12 @@ function nextSlide(slides, titles) {
   slides[index].classList.add("active");
   titles[index].classList.add("active");
 }
-//
+// Checkbox
+
+function toggle(checkbox) {
+  id = checkbox.getAttribute("data-id");
+  fetch("/check", {
+    method: "POST",
+    body: JSON.stringify({ id }),
+  }).then((res) => res.json(console.log(res)));
+}

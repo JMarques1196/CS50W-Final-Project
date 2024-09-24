@@ -27,3 +27,4 @@ class Message(models.Model):
 class CheckList(models.Model):
     project = models.ForeignKey(Project, max_length=150, null=True, on_delete=models.CASCADE)
     item = models.CharField(max_length=150)
+    status = models.BooleanField(default=False)

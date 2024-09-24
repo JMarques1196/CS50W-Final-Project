@@ -23,3 +23,7 @@ class Message(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, related_name="author")
     project = models.ForeignKey(Project, on_delete=models.CASCADE, blank=True, null=True, related_name="project")
     content = models.CharField(max_length=150)
+
+class CheckList(models.Model):
+    project = models.ForeignKey(Project, max_length=150, null=True, on_delete=models.CASCADE)
+    item = models.CharField(max_length=150)

@@ -106,9 +106,13 @@ def loginView(request):
                     "loginForm": loginForm
                 })
     else:
-        return render(request, "final/login.html",{
-            "loginForm": loginForm
-        })
+        """ Make the login page unavailable when a user is loged in """
+        if request.user.is_authenticated:
+            return HttpResponseRedirect(reverse("homepage"))
+        else:
+            return render(request, "final/login.html",{
+                "loginForm": loginForm
+            })
     
 # LOGOUT VIEW
 def logoutView(request):

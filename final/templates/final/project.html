@@ -30,7 +30,11 @@
         <div id="message-box">
             {% for savedComment in savedComments %}
             <!-- Messages Here -->
-                <h2 class="messages"><span>{{savedComment.author}}: </span>{{savedComment.content}}</h2>
+             {% if user == savedComment.author%}
+                <h2 class="messages"><span style="color: #748CAB">Me: </span>{{savedComment.content}}</h2>
+            {% else %}
+                <h2 class="messages"><span style="color: #1D2D44">{{savedComment.author}}: </span>{{savedComment.content}}</h2>
+            {% endif %}
             {% endfor %}
         </div>
         {% if user.is_authenticated%}

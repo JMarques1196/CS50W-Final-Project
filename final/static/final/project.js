@@ -5,8 +5,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // Carousel
   const slides = document.querySelectorAll(".carousel-img");
   const titles = document.querySelectorAll(".carousel-title");
-  slides[0].classList.add("active");
-  titles[0].classList.add("active");
+
+  if (slides[0]) {
+    slides[0].classList.add("active");
+    titles[0].classList.add("active");
+  }
 
   document.querySelector(".prev").addEventListener("click", (e) => {
     prevSlide(slides, titles);

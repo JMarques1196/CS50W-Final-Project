@@ -109,7 +109,7 @@ a{
 }
 
 .footer{
-        padding-top: 3rem;
+        padding-top: 6rem;
         display: flex;
         justify-content: center;
         width: 100%;
@@ -118,7 +118,6 @@ a{
         font-family: "Ubuntu", sans-serif;
         font-weight: 400;
         color: #FDFFFC;
-    
 }
 
 .welcome{
@@ -175,10 +174,12 @@ a{
 /* INDIVIDUAL PROJECT STYLES */
 #project-info{
     display: grid;
+    justify-items: center;
     padding-top: 5rem;
 }
 
 .project-link{
+    text-align: center;
     font-family: "Ubuntu", sans-serif;
     font-weight: 400;
     font-size: 1rem;
@@ -326,6 +327,8 @@ a{
     width: 80%;
     background-color: #FDFFFC;
     border: 1px solid #070707;
+    height: 28px;
+    border-bottom-left-radius: 10px;
 }
 
 .message-submit{
@@ -333,6 +336,8 @@ a{
     background-color: #FDFFFC;
     border: 1px solid #070707;
     cursor: pointer;
+    height: 32px;
+    border-bottom-right-radius: 10px;
 }
 
 /* Checklist */
@@ -349,15 +354,15 @@ a{
 }
 
 #checklist-toggle{
-    width: 30px;
+    width: 20px;
     cursor: pointer;
     margin-bottom: 1rem;
-    fill: #748cab;
+    fill: #FDFFFC
 }
 
 #checklist-toggle:hover{
     transition: all 0.3s ease-in-out;
-    fill: #FDFFFC;
+    fill: #748CAB
 }
 
 #checklist{
@@ -366,7 +371,6 @@ a{
     height: 0;
     overflow: hidden;
     transition: all 0.3s ease-in-out;
-    overflow-y: scroll;
 }
 
 .toggled{

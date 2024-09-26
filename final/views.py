@@ -148,6 +148,9 @@ def signup(request):
                 })
 
     else:
+        if request.user.is_authenticated:
+            return HttpResponseRedirect(reverse("homepage"))
+        else:
             return render(request, "final/signup.html", {
                 "registrationForm": registrationForm
             })

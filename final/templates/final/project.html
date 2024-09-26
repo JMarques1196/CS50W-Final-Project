@@ -10,6 +10,23 @@
 <div id="project-info">
     <a class="project-link" href="{{project.link}}">Project Info</a>
     <a class="project-link" href="https://cs50.me/cs50w">CS50W Gradebook</a>
+            <h1 class="project-link">Specifications Checklist</h1>
+            <svg id="checklist-toggle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+        <div id="checklist">
+            <ul>
+                {% for listItem in listItems%}
+                <li class="checklist-item">
+                    {% if listItem.status == True %}
+                        <input class="checkbox" type="checkbox" checked="checked" data-id="{{listItem.id}}">
+                        {% else %}
+                        <input class="checkbox" type="checkbox" data-id="{{listItem.id}}">
+                    {% endif %}
+                    <span class="checkmark"></span>
+                    <label class="messages">{{listItem.item}}</label>
+                </li>
+                {% endfor%}
+            </ul>
+        </div>
 </div>
 <div id="project-page" >
     <div class="info-container">
@@ -30,7 +47,7 @@
         <div id="message-box">
             {% for savedComment in savedComments %}
             <!-- Messages Here -->
-             {% if user == savedComment.author%}
+            {% if user == savedComment.author%}
                 <h2 class="messages"><span style="color: #748CAB">Me: </span>{{savedComment.content}}</h2>
             {% else %}
                 <h2 class="messages"><span style="color: #1D2D44">{{savedComment.author}}: </span>{{savedComment.content}}</h2>
@@ -45,27 +62,6 @@
             </div>
         {% endif %}
        
-    </div>
-    <div id="checklist-container">
-        <div id="checklist-title-container">
-            <h1 class="title">Specifications Checklist</h1>
-            <svg id="checklist-toggle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
-        </div>
-        <div id="checklist">
-            <ul>
-                {% for listItem in listItems%}
-                <li class="checklist-item">
-                    {% if listItem.status == True %}
-                        <input class="checkbox" type="checkbox" checked="checked" data-id="{{listItem.id}}">
-                        {% else %}
-                        <input class="checkbox" type="checkbox" data-id="{{listItem.id}}">
-                    {% endif %}
-                    <span class="checkmark"></span>
-                    <label class="messages">{{listItem.item}}</label>
-                </li>
-                {% endfor%}
-            </ul>
-        </div>
     </div>
 </div>
 <div class="footer">

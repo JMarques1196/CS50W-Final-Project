@@ -55,13 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
   input = document.querySelector(".message-input");
   submit = document.querySelector(".message-submit");
   input.focus();
-  // Submit message when pressing enter
-  submit.onkeyup = function (e) {
-    if (e.keyCode == 13) {
-      // Enter = keyCode 13
-      submit.click();
-    }
-  };
+
   // Submit onClick
   user = input.getAttribute("data-user");
   submit.onclick = function (e) {
@@ -81,12 +75,23 @@ document.addEventListener("DOMContentLoaded", () => {
       })
     );
   };
+  // Submit message when pressing enter
+  submit.onkeyup = function (e) {
+    if (e.keyCode == 13) {
+      // Enter = keyCode 13
+      submit.click();
+    }
+  };
 
   socket.onmessage = function (e) {
     const data = JSON.parse(e.data);
     var div = document.createElement("div");
     div.classList.add("messages");
-    div.innerHTML = data.username + " : " + data.message;
+    if (data.username === user) {
+      div.innerHTML = "Me: " + data.message;
+    } else {
+      div.innerHTML = data.username + " : " + data.message;
+    }
     input.value = "";
     document.querySelector("#message-box").appendChild(div);
     // set the scrollbar to the bottom again
